@@ -23,6 +23,8 @@
     <modules>
         <module>JpaDemo</module>
         <module>MybatisPlusDemo</module>
+        <module>RedisDemo</module>
+        <module>SpringAnnotationDemo</module>
     </modules>
 
     <dependencies>
