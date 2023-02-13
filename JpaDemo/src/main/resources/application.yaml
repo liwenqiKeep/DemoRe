@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: dgisserver@postgres4322
+    url: jdbc:postgresql://172.18.2.27:5432/lwq_test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: postgres
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
