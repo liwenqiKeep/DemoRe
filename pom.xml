@@ -25,6 +25,7 @@
         <module>MybatisPlusDemo</module>
         <module>RedisDemo</module>
         <module>SpringAnnotationDemo</module>
+        <module>JavaMultiThreadDemo</module>
     </modules>
 
     <dependencies>
