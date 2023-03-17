@@ -1,4 +1,4 @@
-package com.example.mybatisplusdemo.dao;
+package org.lwq.mybatisplusdemo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.mybatisplusdemo.entity.User;

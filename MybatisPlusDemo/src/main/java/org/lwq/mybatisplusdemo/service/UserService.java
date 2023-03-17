@@ -1,4 +1,4 @@
-package com.example.mybatisplusdemo.service;
+package org.lwq.mybatisplusdemo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.mybatisplusdemo.entity.User;

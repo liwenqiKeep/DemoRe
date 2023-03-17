@@ -1,9 +1,9 @@
-package com.example.mybatisplusdemo.service.impl;
+package org.lwq.mybatisplusdemo.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.mybatisplusdemo.dao.UserDao;
 import com.example.mybatisplusdemo.entity.User;
-import com.example.mybatisplusdemo.service.UserService;
+import org.lwq.mybatisplusdemo.dao.UserDao;
+import org.lwq.mybatisplusdemo.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**

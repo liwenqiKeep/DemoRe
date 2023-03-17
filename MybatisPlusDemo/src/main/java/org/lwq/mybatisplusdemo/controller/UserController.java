@@ -1,4 +1,4 @@
-package com.example.mybatisplusdemo.controller;
+package org.lwq.mybatisplusdemo.controller;
 
 
 
@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybatisplusdemo.entity.User;
-import com.example.mybatisplusdemo.service.UserService;
+import org.lwq.mybatisplusdemo.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
