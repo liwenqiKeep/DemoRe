@@ -1,0 +1,5 @@
+minio:
+  endpoint: http://10.50.0.13:9000
+  user: VT3tV7S5s6W2lTGj
+  passwd: 87nmoz6jEn6aBrbnHzWO0JNm7WJFVYeI
+  bucket: test

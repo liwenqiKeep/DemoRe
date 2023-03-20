@@ -5,10 +5,9 @@
     <parent>
         <groupId>org.lwq</groupId>
         <artifactId>DemoRe</artifactId>
-        <version>0.0.1-SNAPSHOT</version>>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.lwq</groupId>
     <artifactId>MybatisPlusDemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>MybatisPlusDemo</name>

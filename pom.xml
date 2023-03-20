@@ -26,6 +26,7 @@
         <module>RedisDemo</module>
         <module>SpringAnnotationDemo</module>
         <module>JavaMultiThreadDemo</module>
+        <module>MinioDemo</module>
     </modules>
 
     <dependencies>
