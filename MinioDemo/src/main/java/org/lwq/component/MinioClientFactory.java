@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 /**
  * @author liwenqi
  */
@@ -26,6 +28,9 @@ public class MinioClientFactory {
     private static final String HEALTH_CHECK_BUCKET_NAME = "health-check";
 
     private final BucketExistsArgs healthBucketExistsArgs = BucketExistsArgs.builder().bucket(HEALTH_CHECK_BUCKET_NAME).build();
+
+    private final ConcurrentLinkedQueue<MinioClient> clients;
+
 
     public MinioClientFactory(MinioConfig config) {
         client = MinioClient.builder()
@@ -47,6 +52,10 @@ public class MinioClientFactory {
             log.error("== minio连接获取异常，请检查配置");
             e.printStackTrace();
         }
+
+
+        clients = new ConcurrentLinkedQueue<>();
+
 
 
     }

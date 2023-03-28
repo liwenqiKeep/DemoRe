@@ -27,6 +27,7 @@
         <module>SpringAnnotationDemo</module>
         <module>JavaMultiThreadDemo</module>
         <module>MinioDemo</module>
+        <module>MongoDBDemo</module>
     </modules>
 
     <dependencies>

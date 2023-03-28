@@ -1,119 +1,123 @@
 package org.lwq.component;
 
-import io.minio.*;
-import io.minio.messages.Item;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.lwq.config.MongoDbConfig;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
-public class MinioClientFactoryTest {
-
-
-    @Autowired
-    private MinioClientFactory minioClientFactory;
-
+public class MongoDbFactoryTest {
+    static BASE64Encoder encoder = new sun.misc.BASE64Encoder();
+    static BASE64Decoder decoder = new sun.misc.BASE64Decoder();
 
     @Test
-    public void testGetClient() {
+    public void getClient() throws InterruptedException {
+        MongoDbConfig config = new MongoDbConfig();
+        config.setHost("10.50.0.12");
+        config.setPort(27017);
+        config.setUser("admin");
+        config.setPasswd("admin@123456");
+        MongoDbFactory factory = new MongoDbFactory(config);
 
-        String bucketName = "minio-test";
-        try {
-            MinioClient client2 = MinioClient.builder()
-                    .endpoint("http://10.50.0.13:9000")
-                    .credentials("VT3tV7S5s6W2lTGj", "87nmoz6jEn6aBrbnHzWO0JNm7WJFVYeI")
-                    .build();
-            // 递归列举某个bucket下的所有文件，然后循环删除
-            Iterable<Result<Item>> iterable = client2.listObjects(ListObjectsArgs.builder()
-                    .bucket(bucketName)
-                    .recursive(true)
-                    .build());
-            for (Result<Item> itemResult : iterable) {
-                client2.removeObject(RemoveObjectArgs.builder().bucket(bucketName).object(itemResult.get().objectName()).build());
-            }
-            client2.removeBucket(RemoveBucketArgs.builder().bucket(bucketName).build());
-        } catch (Exception e) {
+        String pngStr = getPngStr();
 
+        int z = 15;
+        int x = 20;
+        int y = 20;
+        testInsertData(pngStr, z, x, y);
+
+
+        for (int i = 1; i <= z; i++) {
+            int finalI = i;
+            Thread thread = new Thread(() -> {
+//                MongoClient client = factory.getClient();
+                MongoClient client = MongoClients.create("mongodb://admin:admin_mongodb4322@10.50.0.12:17017/?authSource=test");
+
+
+                String dbName = "test";
+
+                MongoDatabase database = client.getDatabase(dbName);
+
+                String collectionName = "layer";
+                MongoCollection<Document> collection = database.getCollection(collectionName);
+
+
+                List<Document> docs = new ArrayList<>();
+                for (int j = 1; j <= x; j++) {
+
+                    for (int k = 1; k <= y; k++) {
+                        Document doc = new Document();
+
+                        collection.find();
+                        doc.append("z", finalI);
+                        doc.append("x", j);
+                        doc.append("y", k);
+                        doc.append("img", pngStr);
+                        doc.append("_id", finalI + "_" + j + "_" + k + "_" + System.currentTimeMillis() + "_" + UUID.randomUUID().toString().replaceAll(
+                                "-", ""));
+                        docs.add(doc);
+//                        collection.insertOne(doc);
+
+                        collection.find();
+                    }
+                    collection.insertMany(docs);
+                    docs.clear();
+                }
+
+            });
+            thread.start();
+            thread.join();
         }
-
-        System.out.println("删除完成\n" + System.currentTimeMillis());
-
-
-        try {
-            MinioClient client = minioClientFactory.getClient();
-            assert client != null;
-
-
-            client.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
-            assert client.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
-
-            client.removeBucket(RemoveBucketArgs.builder().bucket(bucketName).build());
-
-            assert !client.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        testUpload();
     }
 
-    private void testUpload() {
-        try {
-            MinioClient client = minioClientFactory.getClient();
-            assert client != null;
-            String bucketName = "minio-test";
+    private void testInsertData(String pngStr, int z, int x, int y) throws InterruptedException {
+        for (int i = 1; i <= z; i++) {
+            int finalI = i;
+            Thread thread = new Thread(() -> {
+//                MongoClient client = factory.getClient();
+                MongoClient client = MongoClients.create("mongodb://admin:admin_mongodb4322@10.50.0.12:17017/?authSource=test");
 
-            if (!client.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build())) {
 
-                client.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
-            }
+                String dbName = "test";
 
-            String pngStr = getPngStr();
+                MongoDatabase database = client.getDatabase(dbName);
 
-            int z = 15;
-            int x = 20;
-            int y = 20;
+                String collectionName = "layer";
+                MongoCollection<Document> collection = database.getCollection(collectionName);
 
-            for (int j = 1; j <= z; j++) {
-                int finalJ = j;
-                Thread thread = new Thread(() -> {
 
-                    MinioClient client2 = MinioClient.builder()
-                            .endpoint("http://10.50.0.13:9000")
-                            .credentials("VT3tV7S5s6W2lTGj", "87nmoz6jEn6aBrbnHzWO0JNm7WJFVYeI")
-                            .build();
-                    for (int i = 1; i <= x; i++) {
-                        for (int k = 1; k <= y; k++) {
-                            try {
-                                InputStream in = new ByteArrayInputStream(pngStr.getBytes(StandardCharsets.UTF_8));
-                                PutObjectArgs putObjectArg = PutObjectArgs.builder().bucket(bucketName)
-                                        .object(finalJ + "-" + i + "-" + k)
-                                        .stream(in, in.available(), -1).build();
+                List<Document> docs = new ArrayList<>();
+                for (int j = 1; j <= x; j++) {
 
-                                client2.putObject(putObjectArg);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
+                    for (int k = 1; k <= y; k++) {
+                        Document doc = new Document();
+
+                        doc.append("z", finalI);
+                        doc.append("x", j);
+                        doc.append("y", k);
+                        doc.append("img", pngStr);
+                        doc.append("_id", finalI + "_" + j + "_" + k + "_" + System.currentTimeMillis() + "_" + UUID.randomUUID().toString().replaceAll(
+                                "-", ""));
+                        docs.add(doc);
+//                        collection.insertOne(doc);
                     }
-                });
-                thread.start();
-                thread.join();
-            }
+                    collection.insertMany(docs);
+                    docs.clear();
+                }
 
-//            client.removeBucket(RemoveBucketArgs.builder().bucket(bucketName).build());
-
-
-            System.out.println(System.currentTimeMillis());
-        } catch (Exception e) {
-            e.printStackTrace();
+            });
+            thread.start();
+            thread.join();
         }
     }
 
@@ -1141,5 +1145,4 @@ public class MinioClientFactoryTest {
                         "lEewin/izXb/njrjSkbMy00uZ6QFD3pXwO834j0S7P0DRToUUVzd53/1H2xgdbeYt6naAAAAAElF\n" +
                         "TkSuQmCC").toString();
     }
-
 }
