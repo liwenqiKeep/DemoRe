@@ -23,6 +23,8 @@ public class Account {
     @Column(name = "password")
     String password;
 
+    @OneToOne
+    AccountSecure accountSecure;
 
 }
 

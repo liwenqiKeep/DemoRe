@@ -45,7 +45,7 @@
 
     <mappers>
         <!-- 使用相对于类路径的资源引用 -->
-        <mapper resource="mapper/UserMapper.xml"/>
+<!--        <mapper resource="mapper/UserMapper.xml"/>-->
         <!--        <mapper resource="asia/xiaojiang/mybatis03/dao/UserMapper.xml"/>-->
 
         <!-- 使用映射器接口实现类的完全限定类名

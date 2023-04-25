@@ -1,17 +1,42 @@
 package org.lwq.mybatissrcdemo.dao;
 
-import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.lwq.mybatissrcdemo.entity.User;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.io.Reader;
 
-public class UserMapperTest extends TestCase {
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:spring/spring-config-db.xml")
+public class UserMapperTest {
+
+    @Resource
+    private UserMapper userMapper;
+
+
+    @Test
     public void testQueryUserInfoById() {
+//        testByMybatis();
+
+
+        testBySpringMybatis();
+    }
+
+    private void testBySpringMybatis() {
+        User user = userMapper.queryUserInfoById(1L);
+        System.out.println(user);
+        assert user.getUid() == 1L;
+    }
+
+    private void testByMybatis() {
         String resource = "spring/mybatis-config.xml";
         Reader reader;
         try {
@@ -26,6 +51,5 @@ public class UserMapperTest extends TestCase {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
