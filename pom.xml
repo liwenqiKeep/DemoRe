@@ -28,6 +28,7 @@
         <module>JavaMultiThreadDemo</module>
         <module>MinioDemo</module>
         <module>MongoDBDemo</module>
+        <module>MyBatisSrcDemo</module>
     </modules>
 
     <dependencies>

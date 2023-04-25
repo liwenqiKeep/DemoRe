@@ -1,3 +1,10 @@
 # DemoRe
 
-SpringBoot接入部分组件的Demo
+SpringBoot接入组件的Demo
+
+## 已完成：
+* Jpa
+* Minio
+* ongoDB
+* MybatisPlus
+* Redis

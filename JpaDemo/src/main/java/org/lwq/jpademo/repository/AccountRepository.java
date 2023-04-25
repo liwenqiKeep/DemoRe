@@ -19,8 +19,4 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
      */
     List<Account> findAllByUsernameLike(String str);
 
-
-
-
-
 }

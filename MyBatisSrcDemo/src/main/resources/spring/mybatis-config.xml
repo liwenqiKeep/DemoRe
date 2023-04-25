@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="spring/database.properties">
+
+    </properties>
+
+    <!-- 默认使用的环境 ID（比如：default="development"）
+    也就是说我们可以配置多套<environment>环境-->
+    <environments default="development">
+        <!-- 每个 environment 元素定义的环境 ID -->
+        <environment id="development">
+            <!--
+                transactionManager 事务管理器
+                type的值有JDBC和MANAGED
+                    JDBC – 这个配置直接使用了 JDBC 的提交和回滚设施，它依赖从数据源获得的连接来管理事务作用域。
+            -->
+            <transactionManager type="JDBC"/>
+            <!--
+              dataSourcedataSource 数据源 dbcp c3p0 druid
+              type="[UNPOOLED|POOLED|JNDI]"
+              POOLED意思有连接池的连接
+              UNPOOLED意思没有连接池的连接
+              -->
+            <dataSource type="POOLED">
+                <!--                JDBC 驱动-->
+                <property name="driver" value="${driver}"/>
+                <!--                url数据库的 JDBC URL地址。-->
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+
+                <!--            defaultTransactionIsolationLevel – 默认的连接事务隔离级别。&ndash;&gt;-->
+                <!--            <property name="defaultTransactionIsolationLevel" value=""/>-->
+
+                <!--            defaultNetworkTimeout – 等待数据库操作完成的默认网络超时时间（单位：毫秒）&ndash;&gt;-->
+                <!--            <property name="efaultNetworkTimeout" value=""/>-->
+
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- 使用相对于类路径的资源引用 -->
+        <mapper resource="mapper/UserMapper.xml"/>
+        <!--        <mapper resource="asia/xiaojiang/mybatis03/dao/UserMapper.xml"/>-->
+
+        <!-- 使用映射器接口实现类的完全限定类名
+         使用注意点：
+            接口和其配置文件必须同名， 必须在同一个包下
+         -->
+<!--        <mapper class="org.lwq.mybatissrcdemo.dao.UserMapper"/>-->
+
+    </mappers>
+
+</configuration>
