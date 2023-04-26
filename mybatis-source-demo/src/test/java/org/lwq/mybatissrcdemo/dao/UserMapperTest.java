@@ -24,10 +24,10 @@ public class UserMapperTest {
 
     @Test
     public void testQueryUserInfoById() {
-//        testByMybatis();
+        testByMybatis();
 
 
-        testBySpringMybatis();
+//        testBySpringMybatis();
     }
 
     private void testBySpringMybatis() {

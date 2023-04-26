@@ -52,7 +52,7 @@
          使用注意点：
             接口和其配置文件必须同名， 必须在同一个包下
          -->
-<!--        <mapper class="org.lwq.mybatissrcdemo.dao.UserMapper"/>-->
+        <mapper class="org.lwq.mybatissrcdemo.dao.UserMapper"/>
 
     </mappers>
 

@@ -21,14 +21,15 @@
     </properties>
 
     <modules>
-        <module>JpaDemo</module>
-        <module>MybatisPlusDemo</module>
-        <module>RedisDemo</module>
-        <module>SpringAnnotationDemo</module>
-        <module>JavaMultiThreadDemo</module>
-        <module>MinioDemo</module>
-        <module>MongoDBDemo</module>
-        <module>MyBatisSrcDemo</module>
+        <module>jpa-demo</module>
+        <module>mybatis-plus-demo</module>
+        <module>redis-demo</module>
+        <module>spring-annotation-demo</module>
+        <module>java-thread-demo</module>
+        <module>minio-demo</module>
+        <module>mongodb-demo</module>
+        <module>mybatis-source-demo</module>
+        <module>spi-demo</module>
     </modules>
 
     <dependencies>

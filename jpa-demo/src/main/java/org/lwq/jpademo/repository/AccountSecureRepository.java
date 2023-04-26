@@ -9,4 +9,11 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface AccountSecureRepository extends JpaRepository<AccountSecure, Integer> {
+
+    /**
+     * getFirstBySlotOrderByIdDesc
+     * @param s getFirstBySlotOrderByIdDesc
+     * @return int
+     */
+    AccountSecure getFirstBySlotOrderByIdDesc(String s);
 }

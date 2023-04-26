@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-
 class JpaDemoApplicationTests {
 
     @Resource
@@ -33,6 +32,7 @@ class JpaDemoApplicationTests {
 
     @Test
     void accountRepositoryTest() {
+
 //        doInsertAccount();
         doJoinAccountSecure();
 
@@ -43,7 +43,6 @@ class JpaDemoApplicationTests {
 
 //        doDeleteAllAccount();
 //        companyRepository.deleteAll();
-
 
 
     }
@@ -98,7 +97,7 @@ class JpaDemoApplicationTests {
         AccountSecure secure = new AccountSecure();
         System.out.println(account.getUid());
         secure.setId(1);
-        account.setAccountSecure(secure);
+        account.setAccountSecure(accountSecureRepository.getFirstBySlotOrderByIdDesc("dtsw"));
         account = accountRepository.save(account);
         assert account.getUid() != 0;
     }
