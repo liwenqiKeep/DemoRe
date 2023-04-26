@@ -4,6 +4,9 @@ import org.lwq.jpademo.entity.AccountSecure;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author Liwq
+ */
 @Repository
-public interface CompanyRepository extends JpaRepository<AccountSecure, Integer> {
+public interface AccountSecureRepository extends JpaRepository<AccountSecure, Integer> {
 }
