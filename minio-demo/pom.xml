@@ -10,10 +10,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>MinioDemo</artifactId>
+    <artifactId>minio-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>MinioDemo</name>
+    <name>minio-demo</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -10,10 +10,10 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>SpringAnnotationDemo</artifactId>
+  <artifactId>spring-annotation-demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>SpringAnnotationDemo</name>
+  <name>spring-annotation-demo</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
