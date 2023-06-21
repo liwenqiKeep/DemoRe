@@ -30,6 +30,8 @@
         <module>mongodb-demo</module>
         <module>mybatis-source-demo</module>
         <module>spi-demo</module>
+        <module>java-base-demo</module>
+        <module>leetcode</module>
     </modules>
 
     <dependencies>
