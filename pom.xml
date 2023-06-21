@@ -31,7 +31,8 @@
         <module>mybatis-source-demo</module>
         <module>spi-demo</module>
         <module>java-base-demo</module>
-        <module>leetcode</module>    </modules>
+        <module>leetcode</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -43,6 +44,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.progsbase.libraries</groupId>
+            <artifactId>JSON</artifactId>
+            <version>0.4.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

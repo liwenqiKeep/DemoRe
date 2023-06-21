@@ -34,6 +34,12 @@
       <artifactId>spring-boot-starter-data-redis</artifactId>
       <version>2.4.1</version>
     </dependency>
+      <dependency>
+          <groupId>com.progsbase.libraries</groupId>
+          <artifactId>JSON</artifactId>
+          <version>0.4.0</version>
+          <scope>compile</scope>
+      </dependency>
 
 
   </dependencies>
