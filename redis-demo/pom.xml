@@ -10,10 +10,10 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>RedisDemo</artifactId>
+  <artifactId>redis-demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>RedisDemo</name>
+  <name>redis-demo</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

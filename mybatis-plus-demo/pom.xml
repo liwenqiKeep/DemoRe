@@ -8,10 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>MybatisPlusDemo</artifactId>
+    <artifactId>mybaits-plus-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>MybatisPlusDemo</name>
-    <description>MybatisPlusDemo</description>
+    <name>mybaits-plus-demo</name>
+    <description>mybaits-plus-demo</description>
 
     <properties>
         <java.version>8</java.version>

@@ -11,10 +11,10 @@
   </parent>
 
 
-  <artifactId>MongoDBDemo</artifactId>
+  <artifactId>mongodb-demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>MongoDBDemo</name>
+  <name>mongodb-demo</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -9,10 +9,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>JpaDemo</artifactId>
+    <artifactId>jpa-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>JpaDemo</name>
-    <description>JpaDemo</description>
+    <name>jpa-demo</name>
+    <description>jpa-demo</description>
 
     <properties>
         <java.version>8</java.version>

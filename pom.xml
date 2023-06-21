@@ -13,7 +13,7 @@
     <groupId>org.lwq</groupId>
     <artifactId>DemoRe</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>DemoRe</name>
+    <name>demo-registry</name>
     <description>DemoRe</description>
 
     <properties>
@@ -31,8 +31,7 @@
         <module>mybatis-source-demo</module>
         <module>spi-demo</module>
         <module>java-base-demo</module>
-        <module>leetcode</module>
-    </modules>
+        <module>leetcode</module>    </modules>
 
     <dependencies>
         <dependency>
