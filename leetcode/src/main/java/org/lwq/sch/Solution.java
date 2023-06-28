@@ -11,8 +11,8 @@ public class Solution {
     public static void main(String[] args) {
 
         Solution solution = new Solution();
-        int[] aa = {7,1,5,3,6,4};
-        solution.maxProfit(aa);
+        int[] aa = {2, 3, 1, 1, 4};
+        solution.canJump(aa);
 //        System.out.println(solution.majorityElement(aa));
     }
 
@@ -140,8 +140,8 @@ public class Solution {
         }
         while (k > 0) {
 
-            int i = n-2,j=n-1;
-            while (i >= 0){
+            int i = n - 2, j = n - 1;
+            while (i >= 0) {
                 int tmp = nums[i];
                 nums[i] = nums[j];
                 nums[j] = tmp;
@@ -157,25 +157,89 @@ public class Solution {
     }
 
     public int maxProfit(int[] prices) {
-
-        if(prices == null || prices.length < 2){
+        if (prices == null || prices.length < 2) {
             return 0;
         }
 
-        int i = 0;
-        int j = 1;
-        int pro = 0;
-        while (j < prices.length){
-            if(prices[i] < prices[j]){
-                for (int m = j; m < prices.length; m++) {
-                    pro = Math.max(prices[m] - prices[i],pro);
-                }
+        int count = 0;
+        for (int i = 1; i < prices.length; i++) {
+            count += Math.max(prices[i] - prices[i - 1], 0);
+        }
+        return count;
+    }
+
+    public boolean canJump(int[] nums) {
+
+        int k = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > k) {
+                return false;
+            }
+            k = Math.max(k, i + nums[i]);
+        }
+        return true;
+    }
+
+    public int jump(int[] nums) {
+
+        int ans = 0;
+        int end = 0;
+        int maxPos = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            maxPos = Math.max(nums[i] + i, maxPos);
+            if (i == end) {
+                end = maxPos;
+                ans++;
+            }
+        }
+        return ans;
+
+
+    }
+
+
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int totalNum = 0;
+        int curNum = 0;
+        int idx = 0;
+
+        for (int i = 0; i < gas.length; i++) {
+            curNum += gas[i] - cost[i];
+            totalNum += gas[i] - cost[i];
+            if (curNum < 0) {
+                idx = (i + 1) % gas.length;
+                curNum = 0;
             }
 
-            i++;
-            j++;
         }
 
-        return Math.max(pro,0);
+        if (totalNum < 0) {
+            return -1;
+        }
+        return idx;
     }
+
+    public int maxArea(int[] height) {
+//        int len = height.length;
+//        int area = 0;
+//        for (int i = 0; i < len-1; i++) {
+//            for (int j = i+1; j < len; j++) {
+//                area = Math.max(Math.min(height[i],height[j])*(j-i),area);
+//            }
+//        }
+//        return area;
+
+        int i = 0;
+        int j = height.length - 1;
+        int res = 0;
+        while(i < j) {
+            res = height[i] < height[j] ?
+                    Math.max(res, (j - i) * height[i++]):
+                    Math.max(res, (j - i) * height[j--]);
+        }
+        return res;
+
+    }
+
+
 }
